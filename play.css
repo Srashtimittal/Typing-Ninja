@@ -1,0 +1,43 @@
+#time{
+   
+    color:red;
+    
+}
+#score{
+    color:green;
+   
+}
+.lead{
+    font-size:25px;
+}
+#highscore{
+    color:green;
+}
+.change{
+    background: #14364b;
+
+}
+body{
+background: #0e293b;
+
+}
+.instruct{
+    background:#0e293b;
+    border:5px solid green;
+    border-radius:10px;
+    margin-top: 25px;
+    margin-bottom: 35px;
+}
+h2{
+    font-family: 'Oxygen', sans-serif;
+}
+h3{
+    font-family: 'Oxygen', sans-serif;
+}
+h4{
+    color:green;
+    font-family: 'Oxygen', sans-serif;
+}
+p{
+    font-family: 'Oxygen', sans-serif;
+}
