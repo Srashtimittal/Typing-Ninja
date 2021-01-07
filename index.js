@@ -1,29 +1,15 @@
-window.addEventListener('load', init);
-
-
-const levels = {
-  easy: 5,
-  medium: 3,
-  hard: 1
-};
-
-
-const currentLevel = levels.medium;
-
-let time = currentLevel;
+let time = 4;
 let currentscore = 0;
 let play;
-let high;
-let sel;
+let high; 
 
-const wordInput = document.querySelector('#word-input');
-const currentWord = document.querySelector('#current-word');
-const scoreDisplay = document.querySelector('#score');
-const timeDisplay = document.querySelector('#time');
-const message = document.querySelector('#message');
+const wordinput = document.querySelector('#word-input');
+const currentword = document.querySelector('#current-word');
+const scoredisplay = document.querySelector('#score');
+const timedisplay = document.querySelector('#time');
 const seconds = document.querySelector('#seconds');
 const highscore = document.getElementById("highscore");
-
+const end = document.getElementById("end");
 
 const words = [
   'hat',
@@ -36,9 +22,8 @@ const words = [
   'runaway',
   'intelligent',
   'developer',
-  'establishment',
+  'establish',
   'hero',
-  'javascript',
   'involvement',
   'echo',
   'children',
@@ -52,98 +37,89 @@ const words = [
   'space',
   'important',
   'good',
-  'html',
+  'habit',
   'use',
-
+  'nice'
 ];
 
-
-function init() {
- 
-  seconds.innerHTML = currentLevel;
-  
-  highscore.innerHTML = localStorage.getItem('high');
-  
-  wordInput.addEventListener('input', startMatch);
-  
-  
+function gameover() 
+{
+  end.innerHTML = `<h1> Game Over !!</h1>
+    <br>
+    <h2>Your score is ${currentscore} </h2>
+    <br>
+    <button onclick="location.reload()">Play again</button>`;
+  end.style.display = 'flex';
 }
 
-function startGame(button) {
-  if(button.innerHTML == "Exit Game"){
-    document.location.reload()
-  } else {
-    button.innerHTML = "Exit Game"
-    setInterval(countdown, 1000);
-    // Check game status
-    setInterval(checkStatus, 50);
+function countdown()
+{
+  if (time > 0) 
+  {
+    time--;
+  } 
+  else if (time === 0) 
+  {
+    gameover();
   }
+  timedisplay.innerHTML = time;
 }
 
-function removeScore() {
+function init() 
+{
+  seconds.innerHTML = 3;
+  highscore.innerHTML = localStorage.getItem('high');
+  wordinput.addEventListener('input', start);
+  setInterval(countdown, 1000);
+}
+
+window.addEventListener('load', init);
+
+function removeScore() 
+{
   window.localStorage.clear()
   highscore.innerHTML = 0
 }
 
-
-function startMatch() {
-  if (matchWords()) {
-    play = true;
-    time = currentLevel + 1;
-    showword(words);
-    wordInput.value = '';
-    currentscore++;
-    if (currentscore > localStorage.getItem('high', high)) {
-      localStorage.setItem('high',currentscore)
-      highscore.innerHTML = localStorage.getItem('high')
-  }
-}
-  
-  
-scoreDisplay.innerHTML = currentscore;
-highscore.innerHTML = localStorage.getItem('high')
-}
-
-
-function matchWords() {
-  if (wordInput.value === currentWord.innerHTML) {
-    message.innerHTML = 'Correct!!!';
+function matchwords() 
+{
+  if (wordinput.value === currentword.innerHTML) 
+  {
     return true;
-  } else {
-    message.innerHTML = '';
+  } 
+  else 
+  {
     return false;
   }
 }
 
-
-function showword(words) {
- 
-  const randIndex = Math.floor(Math.random() * words.length);
-  
-  currentWord.innerHTML = words[randIndex];
+function showword(words) 
+{
+  const index = Math.floor(Math.random() * words.length);
+  currentword.innerHTML = words[index];
 }
 
-
-function countdown() {
-  
-  if (time > 0) {
-   
-    time--;
-  } else if (time === 0) {
-   
-    play = false;
-    document.getElementById("startgame").innerHTML = "Start Game";
-    document.location.reload();
+function start() 
+{
+  if (matchwords()) 
+  {
+    play = true;
+    time = 4;
+    showword(words);
+    wordinput.value = '';
+    currentscore++;
+    if (currentscore > localStorage.getItem('high', high)) 
+    {
+      localStorage.setItem('high',currentscore);
+      highscore.innerHTML = localStorage.getItem('high');
+    }
   }
-  
-  timeDisplay.innerHTML = time;
+  scoredisplay.innerHTML = currentscore;
+  highscore.innerHTML = localStorage.getItem('high');
 }
 
 
-function checkStatus() {
-  if (!play && time === 0) {
-    message.innerHTML = 'Game Over!!!';
-    score = 0;
-    scoreDisplay.innerHTML = 0;
-  }
-}
+
+
+
+

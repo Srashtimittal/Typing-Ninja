@@ -1,26 +1,30 @@
-#time{
-   
-    color:red;
-    
+#time{  
+    color:red; 
 }
+
 #score{
     color:green;
    
 }
+
 .lead{
     font-size:25px;
 }
+
 #highscore{
     color:green;
 }
+
 .change{
     background: #14364b;
 
 }
+
 body{
 background: #0e293b;
 
 }
+
 .instruct{
     background:#0e293b;
     border:5px solid green;
@@ -28,16 +32,61 @@ background: #0e293b;
     margin-top: 25px;
     margin-bottom: 35px;
 }
+
 h2{
     font-family: 'Oxygen', sans-serif;
 }
+
 h3{
     font-family: 'Oxygen', sans-serif;
 }
-h4{
+
+.information{
+    color:green;
+
+}
+
+p{
+    font-family: 'Oxygen', sans-serif;
+}
+
+#end{
+    background-color: inherit;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index:1;
+}
+
+#end h1{
+    color:red;
+    font-size:60px;
+    font-family: 'Oxygen', sans-serif;
+}
+
+#end h2{
     color:green;
     font-family: 'Oxygen', sans-serif;
 }
-p{
+
+#end button{
+    width: 120px;
+    height:50px;
+    border:3px solid black;
+    border-radius: 9px;
+    font-size:19px;
+    font-weight: bold;
     font-family: 'Oxygen', sans-serif;
+}
+
+#end button:hover{
+    width: 135px;
+    height:58px;
+    font-size:21px;
 }
